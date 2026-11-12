@@ -21,10 +21,14 @@ import {
   Layers,
   MonitorPlay,
   VolumeX,
+  Users,
+  TrendingUp,
+  Monitor,
 } from 'lucide-react';
 
 const LOGO_URL = '/assets/aistudio/1793811586601_ae5d72dc.jpg';
 const REAL_SCREEN_URL = '/assets/aistudio/image_bb923dbb.png';
+const POSTER_IMAGE_URL = '/assets/aistudio/1_9c9ec1ba.jpeg';
 
 interface Animalito {
   number: string;
@@ -234,7 +238,7 @@ const REAL_BOARDS: LotteryBoard[] = [
 
 export default function App() {
   // Configurable settings
-  const [telefonoWhatsapp, setTelefonoWhatsapp] = useState<string>('584120000000');
+  const [telefonoWhatsapp, setTelefonoWhatsapp] = useState<string>('584164988778');
   const [precioMensual, setPrecioMensual] = useState<string>('$6');
   const [precioTrimestral, setPrecioTrimestral] = useState<string>('$15');
   const [agencyBannerText, setAgencyBannerText] = useState<string>(
@@ -245,6 +249,7 @@ export default function App() {
   // Display mode in Showcase: Real Screen Image vs Live Voice Simulator
   const [showcaseMode, setShowcaseMode] = useState<'real' | 'simulator'>('real');
   const [isRealImageZoomed, setIsRealImageZoomed] = useState<boolean>(false);
+  const [isPosterZoomed, setIsPosterZoomed] = useState<boolean>(false);
 
   // Live TV Simulator state
   const [boards, setBoards] = useState<LotteryBoard[]>(REAL_BOARDS);
@@ -510,69 +515,230 @@ export default function App() {
 
       {/* Main Content Area */}
       <main id="inicio" className="flex-1 max-w-[1240px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12">
-        {/* Hero Section styled with the vibrant dark neon aesthetic */}
-        <section className="relative rounded-3xl bg-gradient-to-b from-[#0d1424] via-[#090d18] to-[#06090f] border border-slate-800 p-6 sm:p-12 overflow-hidden shadow-2xl">
-          {/* Ambient Glow Orbs */}
-          <div className="absolute top-0 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        {/* HERO SECTION: INSPIRADO EXACTAMENTE EN EL PÓSTER PUBLICITARIO */}
+        <section className="relative rounded-3xl bg-[radial-gradient(ellipse_at_top,_#004b99_0%,_#061836_45%,_#020b18_100%)] border-2 border-sky-400/50 p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_0_50px_rgba(14,165,233,0.25)]">
+          {/* Ambient Lighting & Flares matching the flyer */}
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sky-400/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/2 -left-20 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
-            {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/50 text-emerald-300 text-xs font-bold tracking-wide uppercase mb-6 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Sistema 100% Online para Agencias de Lotería</span>
+          <div className="relative z-10 max-w-5xl mx-auto space-y-8">
+            {/* Top Bar matching Poster Top Header */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-sky-400/30 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-sky-300 shadow-[0_0_15px_rgba(56,189,248,0.5)] bg-black shrink-0">
+                  <img src={LOGO_URL} alt="Logo Pizarra Animal" className="w-full h-full object-cover scale-110" />
+                </div>
+                <div>
+                  <div className="text-sm sm:text-base font-black tracking-wider text-white font-display">
+                    PIZARRA<span className="text-[#ef4444]">A</span><span className="text-[#10b981]">N</span><span className="text-[#3b82f6]">I</span><span className="text-[#a855f7]">M</span><span className="text-[#f59e0b]">A</span><span className="text-[#f97316]">L</span>
+                  </div>
+                  <div className="text-[10px] text-sky-200 tracking-widest font-semibold uppercase">
+                    Tablero Digital en Tiempo Real
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="hidden sm:block h-6 w-[2px] bg-sky-400/40" />
+                <span className="font-display font-extrabold text-xl sm:text-2xl italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-200 to-sky-400 drop-shadow-[0_0_12px_rgba(56,189,248,0.6)]">
+                  ¡Impulsa tu agencia!
+                </span>
+              </div>
             </div>
 
-            {/* Main Headline */}
-            <h1
-              className="font-display font-extrabold text-white tracking-tight mb-5 leading-[1.12]"
-              style={{
-                fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
-                textWrap: 'balance',
-              }}
-            >
-              Moderniza tu Agencia con{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-yellow-300 to-amber-400">
-                Pizarra Animal
-              </span>
-            </h1>
+            {/* Giant Title & 3D Animal Badge */}
+            <div className="text-center space-y-3">
+              <div className="inline-flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+                <span
+                  className="font-display font-black text-white tracking-tighter drop-shadow-[0_8px_16px_rgba(0,0,0,0.9)]"
+                  style={{
+                    fontSize: 'clamp(2.5rem, 7vw, 4.8rem)',
+                    lineHeight: 1,
+                  }}
+                >
+                  PIZARRA
+                </span>
 
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-              Muestra los resultados de animalitos en tiempo real en tus televisores o proyectores
-              con el diseño exacto que tus clientes buscan: bordes neón de alta visibilidad,
-              anuncios por voz automática e historial completo de jugadas.
-            </p>
+                {/* 3D Mascot Badge with Lion & Rabbit */}
+                <div className="inline-flex items-center justify-center bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-900 border-2 border-sky-200 p-2.5 sm:p-3 rounded-2xl shadow-[0_8px_20px_rgba(2,132,199,0.6)]">
+                  <span className="text-2xl sm:text-4xl select-none">🦁🐰</span>
+                </div>
+              </div>
 
-            {/* Hero CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-              <a
-                href={crearLinkWA(msjGeneral)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-extrabold text-base px-7 py-3.5 rounded-xl transition-all shadow-[0_0_20px_rgba(37,211,102,0.35)] whitespace-nowrap shrink-0 cursor-pointer"
-              >
-                <MessageCircle className="w-5 h-5 text-slate-950" />
-                <span>Activar Pizarra por WhatsApp</span>
-              </a>
+              {/* Glowing Golden Curved Pill */}
+              <div>
+                <div className="inline-block bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 text-slate-950 font-display font-black text-xl sm:text-3xl px-8 py-2 rounded-full uppercase tracking-wider shadow-[0_6px_20px_rgba(245,158,11,0.6)] border-2 border-yellow-200 transform -rotate-1">
+                  ANIMAL DIGITAL
+                </div>
+              </div>
 
-              <a
-                href="https://pizarraanimal.ai.studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-slate-800/90 hover:bg-slate-700 text-white border border-slate-700 hover:border-emerald-500 font-bold text-base px-7 py-3.5 rounded-xl transition-all whitespace-nowrap shrink-0"
-              >
-                <ExternalLink className="w-4 h-4 text-emerald-400" />
-                <span>Entrar a pizarraanimal.ai.studio</span>
-              </a>
+              {/* Floating Lottery Balls & Dynamic Headline */}
+              <div className="pt-2 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold text-sky-200">
+                <span className="w-6 h-6 rounded-full bg-fuchsia-600 text-white flex items-center justify-center font-black text-xs shadow-md">7</span>
+                <span className="w-6 h-6 rounded-full bg-cyan-500 text-white flex items-center justify-center font-black text-xs shadow-md">8</span>
+                <span className="w-6 h-6 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xs shadow-md">3</span>
+                <span className="text-lg">🎲</span>
+                <span className="text-white text-base sm:text-xl font-black tracking-wide uppercase font-display">
+                  ¡Resultados <span className="text-yellow-400 underline decoration-amber-400 decoration-2">en vivo</span> de Loterías & Animalitos!
+                </span>
+                <span className="text-base select-none">🦅 🐟 🐐 🐬</span>
+              </div>
             </div>
 
-            <div className="flex items-center justify-center gap-4 text-xs text-slate-400 pt-2 font-medium">
-              <span>✓ Activación inmediata</span>
-              <span aria-hidden="true">·</span>
-              <span>✓ Pago Móvil en Bs. a tasa BCV</span>
-              <span aria-hidden="true">·</span>
-              <span>✓ Compatible con cualquier Smart TV o TV Box</span>
+            {/* Split Hero Grid: Authentic Poster on the Left, 4 Highlights + Big Action on the Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+              {/* Left Column (5 cols): High-Resolution Flyer / TV in Agency Setting */}
+              <div className="lg:col-span-5 relative group">
+                <div className="relative rounded-2xl overflow-hidden border-2 border-sky-300/60 shadow-[0_0_35px_rgba(56,189,248,0.4)] bg-slate-950">
+                  <img
+                    src={POSTER_IMAGE_URL}
+                    alt="Póster oficial Pizarra Animal Digital"
+                    className="w-full h-auto object-cover block cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                    onClick={() => setIsPosterZoomed(true)}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+                    <button
+                      onClick={() => setIsPosterZoomed(true)}
+                      className="px-4 py-2 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-xs rounded-lg shadow-lg flex items-center gap-2 cursor-pointer"
+                    >
+                      <Eye className="w-4 h-4" />
+                      <span>Ver Póster Completo en HD</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="text-center mt-2">
+                  <span className="text-[11px] text-sky-300/80 font-medium">
+                    🔍 Haz clic para ver el diseño publicitario original en alta resolución
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column (7 cols): The 4 Feature Cards + The Grand Golden Button */}
+              <div className="lg:col-span-7 space-y-6">
+                {/* 4 Feature Badges exactly like in the poster */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="bg-[#071938]/90 border border-sky-400/40 hover:border-yellow-400 p-4 rounded-2xl text-center space-y-1.5 transition-all shadow-[0_4px_15px_rgba(2,132,199,0.2)]">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400/15 text-yellow-300 mb-1">
+                      <Users className="w-5 h-5 text-yellow-400" />
+                    </div>
+                    <div className="text-sm font-black text-white leading-tight uppercase font-display">
+                      Atrae Más Clientes
+                    </div>
+                    <p className="text-[11px] text-sky-200">
+                      Pantalla atractiva y profesional que llama la atención de todos los jugadores.
+                    </p>
+                  </div>
+
+                  <div className="bg-[#071938]/90 border border-sky-400/40 hover:border-yellow-400 p-4 rounded-2xl text-center space-y-1.5 transition-all shadow-[0_4px_15px_rgba(2,132,199,0.2)]">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400/15 text-yellow-300 mb-1">
+                      <TrendingUp className="w-5 h-5 text-yellow-400" />
+                    </div>
+                    <div className="text-sm font-black text-white leading-tight uppercase font-display">
+                      Resultados al Instante y Confiables
+                    </div>
+                    <p className="text-[11px] text-sky-200">
+                      Actualización automática directa de cada sorteo sin retrasos ni errores.
+                    </p>
+                  </div>
+
+                  <div className="bg-[#071938]/90 border border-sky-400/40 hover:border-yellow-400 p-4 rounded-2xl text-center space-y-1.5 transition-all shadow-[0_4px_15px_rgba(2,132,199,0.2)]">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400/15 text-yellow-300 mb-1">
+                      <Monitor className="w-5 h-5 text-yellow-400" />
+                    </div>
+                    <div className="text-sm font-black text-white leading-tight uppercase font-display">
+                      Pantalla Profesional en tu Local
+                    </div>
+                    <p className="text-[11px] text-sky-200">
+                      Compatible con cualquier Smart TV, TV Box Android, PC o proyector.
+                    </p>
+                  </div>
+
+                  <div className="bg-[#071938]/90 border border-sky-400/40 hover:border-yellow-400 p-4 rounded-2xl text-center space-y-1.5 transition-all shadow-[0_4px_15px_rgba(2,132,199,0.2)]">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400/15 text-yellow-300 mb-1">
+                      <Volume2 className="w-5 h-5 text-yellow-400" />
+                    </div>
+                    <div className="text-sm font-black text-white leading-tight uppercase font-display">
+                      Fácil Gestión · Locución en Vivo
+                    </div>
+                    <p className="text-[11px] text-sky-200">
+                      Canta los resultados por voz en los altavoces de tu agencia automáticamente.
+                    </p>
+                  </div>
+                </div>
+
+                {/* The Golden Action Button (Exact from Flyer) */}
+                <div className="space-y-3 pt-2">
+                  <a
+                    href={crearLinkWA('¡Hola! Vi la publicidad de Pizarra Animal Digital y quiero afiliarme para modernizar mi agencia de lotería.')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center py-4 px-6 rounded-2xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 hover:from-yellow-200 hover:to-amber-300 text-slate-950 font-black shadow-[0_8px_30px_rgba(245,158,11,0.6)] border-2 border-yellow-200 transition-all hover:scale-[1.02] cursor-pointer group"
+                  >
+                    <div className="text-xl sm:text-2xl tracking-wide flex items-center justify-center gap-2 font-display">
+                      <span>¡AFÍLIATE HOY!</span>
+                      <span className="text-2xl group-hover:translate-x-1 transition-transform">👆</span>
+                    </div>
+                    <div className="text-xs sm:text-sm tracking-widest font-extrabold uppercase text-slate-900/90 mt-0.5">
+                      Y Moderniza tu Agencia de Lotería
+                    </div>
+                  </a>
+
+                  {/* Secondary Links Row */}
+                  <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-sky-200">
+                    <a
+                      href="#pantalla-real"
+                      className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+                    >
+                      <Tv className="w-4 h-4 text-sky-400" />
+                      <span>Ver Pantalla Real de TV Abajo</span>
+                    </a>
+                    <span>·</span>
+                    <a
+                      href="#planes"
+                      className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+                    >
+                      <DollarSign className="w-4 h-4 text-yellow-400" />
+                      <span>Ver Planes (${precioMensual} y ${precioTrimestral})</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Contact Pill Bar matching the Flyer footer */}
+            <div className="pt-2">
+              <div className="rounded-full bg-slate-950/80 border border-sky-400/40 py-2.5 px-6 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm font-bold shadow-md">
+                <a
+                  href={`https://wa.me/${cleanPhone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-white hover:text-emerald-400 transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center text-slate-950 text-xs font-black">
+                    💬
+                  </div>
+                  <span>{telefonoWhatsapp.startsWith('58') ? '0' + telefonoWhatsapp.slice(2) : telefonoWhatsapp}</span>
+                </a>
+
+                <span className="hidden sm:inline text-sky-400/60">|</span>
+
+                <a
+                  href="https://pizarraanimal.ai.studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sky-300 hover:text-white transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4 text-sky-400" />
+                  <span>pizarraanimal.ai.studio</span>
+                </a>
+
+                <span className="hidden sm:inline text-sky-400/60">|</span>
+
+                <span className="text-yellow-400 font-extrabold">
+                  ⚡ Activación Inmediata con Pago Móvil
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -1318,6 +1484,42 @@ export default function App() {
           </div>
 
           <div className="text-xs text-slate-400 text-center pb-2">
+            Presiona Esc o haz clic fuera de la imagen para cerrar
+          </div>
+        </div>
+      )}
+
+      {/* FULLSCREEN ZOOM MODAL FOR THE POSTER FLYER */}
+      {isPosterZoomed && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 sm:p-6"
+          onClick={() => setIsPosterZoomed(false)}
+        >
+          <div className="w-full max-w-5xl flex items-center justify-between text-white pb-3 border-b border-sky-400/30">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-yellow-400" />
+              <span className="font-extrabold text-sm sm:text-base font-display">
+                Póster Publicitario Oficial: Pizarra Animal Digital
+              </span>
+            </div>
+            <button
+              onClick={() => setIsPosterZoomed(false)}
+              className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-bold cursor-pointer"
+            >
+              ✕ Cerrar
+            </button>
+          </div>
+
+          <div className="flex-1 flex items-center justify-center p-2 max-w-4xl w-full">
+            <img
+              src={POSTER_IMAGE_URL}
+              alt="Póster oficial en alta resolución"
+              className="max-h-[85vh] w-auto object-contain rounded-2xl border-2 border-sky-400/40 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+
+          <div className="text-xs text-sky-200 text-center pb-2">
             Presiona Esc o haz clic fuera de la imagen para cerrar
           </div>
         </div>
