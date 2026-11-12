@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>publicidad pizarra - Pizarra Animal Online</title>
+    <meta name="description" content="Sistema 100% online de pizarra digital de animalitos en tiempo real con anuncios por voz, alertas en pantalla y planes para agencias de lotería." />
+    <meta property="og:title" content="publicidad pizarra - Pizarra Animal Online" />
+    <meta property="og:description" content="Moderniza tu agencia de lotería con resultados de animalitos en tiempo real, anuncios por voz y alertas en pantalla para Smart TV, TV Box y PC." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        try {
+          var originalFetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function () {
+              return originalFetch;
+            },
+            set: function (val) {
+              originalFetch = val;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        } catch (e) {}
+
+        window.addEventListener(
+          'error',
+          function (event) {
+            if (
+              (event.filename && event.filename.includes('chrome-extension://')) ||
+              (event.message && event.message.includes('Cannot set property fetch'))
+            ) {
+              event.preventDefault();
+              if (typeof event.stopImmediatePropagation === 'function') {
+                event.stopImmediatePropagation();
+              }
+              return true;
+            }
+          },
+          true
+        );
+      })();
+    </script>
+  </head>
+  <body class="bg-[#06090f] text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

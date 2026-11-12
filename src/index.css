@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .font-mono-tabular {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.glow-neon-green {
+  border-color: #22c55e;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.35), inset 0 0 12px rgba(34, 197, 94, 0.08);
+}
+
+.glow-neon-orange {
+  border-color: #f97316;
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.35), inset 0 0 12px rgba(249, 115, 22, 0.08);
+}
+
+.glow-neon-emerald {
+  border-color: #10b981;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.35), inset 0 0 12px rgba(16, 185, 129, 0.08);
+}
+
+.glow-neon-red {
+  border-color: #ef4444;
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.35), inset 0 0 12px rgba(239, 68, 68, 0.08);
+}
+
+.glow-neon-yellow {
+  border-color: #eab308;
+  box-shadow: 0 0 18px rgba(234, 179, 8, 0.35), inset 0 0 12px rgba(234, 179, 8, 0.08);
+}
+
+.glow-neon-purple {
+  border-color: #a855f7;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.35), inset 0 0 12px rgba(168, 85, 247, 0.08);
+}
+

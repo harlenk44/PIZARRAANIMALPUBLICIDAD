@@ -1,0 +1,6 @@
+{
+  "name": "publicidad pizarra",
+  "description": "Sistema 100% online de pizarra digital de animalitos en tiempo real con anuncios por voz, alertas en pantalla y planes para agencias de lotería.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
